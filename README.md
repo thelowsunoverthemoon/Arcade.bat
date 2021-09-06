@@ -6,7 +6,7 @@
 ## 🐍 Snake 🐍
 There's been Snake done in pure Batch already [here](https://www.dostips.com/forum/viewtopic.php?t=4741) by dbenham, but I wanted to make a version that was as simple and minimal as possible. I also wanted to make a version that relied solely on VT100 escape sequences for display.
 
-The following version of Snake in Batch is very simple, and it has non-blocking controls, pellets, ect, everything in a classic Snake game. Also, I made it so that moving in the opposite direction results in a collision, just for that extra challenge. It also has 3 "skins" you can choose from just for fun. To play, just save it in a .bat file and run. You MUST save it in UTF-8 format, or else the Unicode characters show. You can also change up the Snake Speed, but editing the snake[speed] variable. (lower number -> faster)
+The following version of Snake in Batch is very simple, and it has non-blocking controls, pellets, ect, everything in a classic Snake game. Also, I made it so that moving in the opposite direction results in a collision, just for that extra challenge. It also has 3 "skins" you can choose from just for fun. To play, just save it in a .bat file and run. You MUST save it in UTF-8 format, or else the Unicode characters show. You can also change up the Snake Speed, but editing the ```snake[speed]``` variable. (lower number -> faster)
 
 Original post [here](https://www.reddit.com/r/Batch/comments/k9hnxv/snake_in_pure_batch/)
 
