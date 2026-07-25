@@ -20,7 +20,9 @@ FOR %%R in (!proj!) DO (
     IF not "!zombie.hit!" == "!zombie.hit:[%%Y;%%X]=!" (
         SET /A hit=!zombie.hit:[%%1;%%X]=1,!
 ```
-"Hit" will contain the id of the zombie of who got hit. So instead of having to do an additional loop making it ```O(n^2)```, this is just ```O(n)```. How it works is that an undefined variable like [2,3] becomes 0. Also, the reason I replace with "," is for the case when 2 zombies are in the same place. This way only the first zombie gets hit, since after ```,``` itll be treated as a separate expression 
+"Hit" will contain the id of the zombie of who got hit. So instead of having to do an additional loop making it ```O(n^2)```, this is just ```O(n)```. How it works is that an undefined variable like [2,3] becomes 0. Also, the reason I replace with "," is for the case when 2 zombies are in the same place. This way only the first zombie gets hit, since after ```,``` itll be treated as a separate expression.
+
+Still a couple things I wanted to do like add music, and fix some bugs. But, I'm too lazy for that.
 
 
 ## 🐍 Snake 🐍
