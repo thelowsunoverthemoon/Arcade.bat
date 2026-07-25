@@ -3,6 +3,26 @@
 <p align="center">A Collection of Arcade Games using Batch and VT100 escape sequences</p>
 <p align="center">⚠️ Windows 10 only ⚠️</p>
 
+## 🌱 Plants Vs Zombies 🌱
+This one is written much better than the other ones (written over 5 years later). Was planning on doing a full fledged game, but as of right now the main system is there. However, only 1 level. See [Momodora: Lunar Glow](https://github.com/thelowsunoverthemoon/MomodoraLunarGlow) for another example of similar games. Some interesting things I did:
+
+* Have the renderer be a separate process than the game logic. Not sure if it makes it faster but the main loop is a lot smaller. Now there are 3 processes running at once : ```RENDERER```, ```CONTROLLER```, and ```GAME```.
+* I thought of a fun way to do projectile collision when you need to know who got hit (in this case, zombies) without needing a projectile loop. Assuming each zombie has an ```id```. We go thru the loop to move the zombies, and we set this variable:
+```Batch
+FOR %%G in (!zombies!) DO (
+    // move them
+    SET "zombie.hit=!zombie.hit!+%%G*[!zombie.%%G.y!;!zombie.%%G.x!]"
+```
+Now when we do projectile collision 
+```Batch
+FOR %%R in (!proj!) DO (
+    // assume %%X and %%Y are projectile X and Y
+    IF not "!zombie.hit!" == "!zombie.hit:[%%Y;%%X]=!" (
+        SET /A hit=!zombie.hit:[%%1;%%X]=1,!
+```
+"Hit" will contain the id of the zombie of who got hit. So instead of having to do an additional loop making it ```O(n^2)```, this is just ```O(n)```. How it works is that an undefined variable like [2,3] becomes 0. Also, the reason I replace with "," is for the case when 2 zombies are in the same place. This way only the first zombie gets hit, since after ```,``` itll be treated as a separate expression 
+
+
 ## 🐍 Snake 🐍
 There's been Snake done in pure Batch already [here](https://www.dostips.com/forum/viewtopic.php?t=4741) by dbenham, but I wanted to make a version that was as simple and minimal as possible. I also wanted to make a version that relied solely on VT100 escape sequences for display.
 
